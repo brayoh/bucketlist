@@ -1,0 +1,25 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "allowImportExportEverywhere": true,
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ]
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "overrides": [{
+    "files": ["src/*.js"],
+    "excludedFiles": ["*.test.js", "src/registerServiceWorker.js"]
+  }]
+}
