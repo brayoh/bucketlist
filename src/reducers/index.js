@@ -1,3 +1,5 @@
-import login from "./loginReducer";
+import auth from "./authReducer";
+import bucketlists from "./bucketlistReducer";
+import whoami from "./whoamiReducer";
 
-export default login
+export {auth, bucketlists, whoami}
