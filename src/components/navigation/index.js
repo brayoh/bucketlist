@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router";
 import {withStyles} from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -13,16 +14,9 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
-import AppDrawer from "./AppDrawer";
 
 // icons
 import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import StarIcon from 'material-ui-icons/Star';
-import SendIcon from 'material-ui-icons/Send';
-import MailIcon from 'material-ui-icons/Mail';
-import DeleteIcon from 'material-ui-icons/Delete';
-import ReportIcon from 'material-ui-icons/Report';
 
 const styles = {
   root: {
@@ -30,109 +24,97 @@ const styles = {
   },
   flex: {
     flex: 1
+  },
+  list: {
+    width: 250,
+    flex: 'initial',
+  },
+  listFull: {
+    width: 'auto',
+    flex: 'initial',
   }
 };
 
+
 class AppNavigation extends Component {
   state = {
-    open: {
-      top: false,
-      left: false,
-      bottom: false,
-      right: false
-    }
+    open: false
   };
 
-  toggleDrawer = (side, open) => {
-    const drawerState = {};
-    drawerState[side] = open;
-    this.setState({open: drawerState});
-  };
-
-  handleLeftOpen = () => this.toggleDrawer('left', true);
-  handleLeftClose = () => this.toggleDrawer('left', false);
+  handleOpen = () => this.setState({open: true});
+  handleClose = () => this.setState({open: false});
 
 
   render() {
     const classes = this.props.classes;
-    const mailFolderListItems = (
+    const publicNav = (
       <div>
-        <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <StarIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Starred"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <SendIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Send mail"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DraftsIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Drafts"/>
-        </ListItem>
+        <Link to="/login">
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Login"/>
+          </ListItem>
+        </Link>
+
+        <Link to="/register">
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Register"/>
+          </ListItem>
+        </Link>
       </div>
     );
 
-    const otherMailFolderListItems = (
+    const authenticatedNav = (
       <div>
-        <ListItem button>
-          <ListItemIcon>
-            <MailIcon/>
-          </ListItemIcon>
-          <ListItemText primary="All mail"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DeleteIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Trash"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <ReportIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Spam"/>
-        </ListItem>
+        <Link to="/dashboard">
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Dashboard"/>
+          </ListItem>
+        </Link>
+        <Link to="/logout">
+          <ListItem button>
+            <ListItemIcon>
+              <InboxIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Logout"/>
+          </ListItem>
+        </Link>
       </div>
     );
 
     const sideList = (
       <div>
         <List className={classes.list} disablePadding>
-          {mailFolderListItems}
-        </List>
-        <Divider/>
-        <List className={classes.list} disablePadding>
-          {otherMailFolderListItems}
+          {
+            this.props.authenticated ? authenticatedNav: publicNav
+          }
         </List>
       </div>
     );
+
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
             <IconButton color="contrast" aria-label="Menu">
-              <MenuIcon onClick={this.handleLeftOpen}/>
+              <MenuIcon onClick={this.handleOpen}/>
             </IconButton>
             <Typography type="title" color="inherit" className={classes.flex}>
               Title
             </Typography>
-            <Button color="contrast">Login</Button>
+            { !this.props.authenticated && <Link to="/login"><Button color="contrast">Login</Button></Link>}
           </Toolbar>
         </AppBar>
-        <Drawer open={this.state.open.left} onRequestClose={this.handleLeftClose} onClick={this.handleLeftClose}>
+        <Drawer open={this.state.open} onRequestClose={this.handleClose} onClick={this.handleClose}>
           {sideList}
         </Drawer>
       </div>
