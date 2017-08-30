@@ -1,7 +1,7 @@
 const initialState = {
-  "error": false,
   "authenticated": false,
-  "bucketlists": []
+  "message": "",
+  "status": "",
 }
 
-export default initialState
+export default initialState;
