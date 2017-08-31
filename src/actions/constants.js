@@ -35,6 +35,11 @@ export const DELETE_BUCKETLIST_REQUEST: string = 'DELETE_BUCKETLIST_REQUEST';
 export const DELETE_BUCKETLIST_SUCCESS: string = 'DELETE_BUCKETLIST_SUCCESS';
 export const DELETE_BUCKETLIST_FAILURE: string = 'DELETE_BUCKETLIST_FAILURE';
 
+// add bucketlist item
+export const ADD_ITEM_REQUEST: string = 'ADD_ITEM_REQUEST';
+export const ADD_ITEM_SUCCESS: string = 'ADD_ITEM_SUCCESS';
+export const ADD_ITEM_FAILURE: string = 'ADD_ITEM_FAILURE';
+
 // update bucketlist item
 export const UPDATE_ITEM_REQUEST: string = 'UPDATE_ITEM_REQUEST';
 export const UPDATE_ITEM_SUCCESS: string = 'UPDATE_ITEM_SUCCESS';
