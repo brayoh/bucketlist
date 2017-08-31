@@ -15,6 +15,10 @@ export const WHOAMI_REQUEST: string = 'WHOAMI_REQUEST';
 export const WHOAMI_SUCCESS: string = 'WHOAMI_SUCCESS';
 export const WHOAMI_FAILURE: string = 'WHOAMI_FAILURE';
 
+// add new bucketlist
+export const ADD_BUCKETLIST_REQUEST: string = 'ADD_BUCKETLIST_REQUEST';
+export const ADD_BUCKETLIST_SUCCESS: string = 'ADD_BUCKETLIST_SUCCESS';
+export const ADD_BUCKETLIST_FAILURE: string = 'ADD_BUCKETLIST_FAILURE';
 
 // get bucketlists
 export const GET_BUCKETLISTS_REQUEST: string = 'GET_BUCKETLISTS_REQUEST';
@@ -30,11 +34,6 @@ export const UPDATE_BUCKETLIST_FAILURE: string = 'UPDATE_BUCKETLIST_FAILURE';
 export const DELETE_BUCKETLIST_REQUEST: string = 'DELETE_BUCKETLIST_REQUEST';
 export const DELETE_BUCKETLIST_SUCCESS: string = 'DELETE_BUCKETLIST_SUCCESS';
 export const DELETE_BUCKETLIST_FAILURE: string = 'DELETE_BUCKETLIST_FAILURE';
-
-// // get bucketlists items
-// export const GET_ITEMS_REQUEST: string = 'GET_ITEMS_REQUEST';
-// export const GET_ITEMS_SUCCESS: string = 'GET_ITEMS_SUCCESS';
-// export const GET_ITEMS_FAILURE: string = 'GET_ITEMS_FAILURE';
 
 // update bucketlist item
 export const UPDATE_ITEM_REQUEST: string = 'UPDATE_ITEM_REQUEST';
