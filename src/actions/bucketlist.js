@@ -1,3 +1,11 @@
-import {GET_BUCKETLISTS_REQUEST} from "./constants";
+import {
+  GET_BUCKETLISTS_REQUEST,
+  ADD_BUCKETLIST_REQUEST,
+  DELETE_BUCKETLIST_REQUEST
+} from "./constants";
 
 export const getBucketlists: Object = (token) => ({type: GET_BUCKETLISTS_REQUEST, token})
+
+export const addBucketlist: Object = (payload) => ({type: ADD_BUCKETLIST_REQUEST, payload})
+
+export const deleteBucketlist: Object = (payload) => ({type: DELETE_BUCKETLIST_REQUEST, payload})
