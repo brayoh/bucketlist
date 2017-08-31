@@ -43,7 +43,8 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = (state: Object, ownProps: Object) => ({
-  bucketlists: state.bucketlists
+  bucketlists: state.bucketlists,
+  whoami: state.whoami
 })
 
 const mapDispatchToProps = dispatch => ({
