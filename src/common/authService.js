@@ -1,6 +1,6 @@
 import instance from "./axios_config";
 
-function loginUser(user) {
+function loginUser(user: Object) {
   return instance.request({
     url: '/auth/login',
     method: 'POST',

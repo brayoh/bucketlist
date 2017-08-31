@@ -19,6 +19,7 @@ export const WHOAMI_FAILURE: string = 'WHOAMI_FAILURE';
 export const ADD_BUCKETLIST_REQUEST: string = 'ADD_BUCKETLIST_REQUEST';
 export const ADD_BUCKETLIST_SUCCESS: string = 'ADD_BUCKETLIST_SUCCESS';
 export const ADD_BUCKETLIST_FAILURE: string = 'ADD_BUCKETLIST_FAILURE';
+export const RESET_REQUEST_STATE: string = 'RESET_REQUEST_STATE';
 
 // get bucketlists
 export const GET_BUCKETLISTS_REQUEST: string = 'GET_BUCKETLISTS_REQUEST';
