@@ -17,17 +17,9 @@ class DashboardContainer extends Component {
   }
 
   componentWillMount(){
-    const token = localStorage.getItem("awesome_bucketlist_token");
+    const token: string = localStorage.getItem("awesome_bucketlist_token");
     this.props.getBucketlists(token);
   }
-
-  // componentWillReceiveProps(nextProps){
-  //   console.log("nextProps", nextProps)
-  //   if(nextProps.response.status === "success"){
-  //     // user registration was successful
-  //
-  //   }
-  // }
 
   handleSubmit(e: Object) {
     e.preventDefault();
