@@ -1,0 +1,41 @@
+Version 0.1.0
+ - [CHORE] Fix modal not showing description input bug
+ - [FEATURE] Modify bucketlist reducers, Add CRUD functiomality for bucketlists and bucketlist items, redesign the login and register pages
+ - [FEATURE] Add action to reset the success state of a request after adding a bucketlist
+ - [CHORE] Add constants for items actions
+ - [CHORE] Add create and delete bucketlist sagas to root saga
+ - [FEATURE] Add delete and create bucketlist sagas
+ - [CHORE] Add delete and create bucketlist reducers
+ - [CHORE] Add whoami object to dashboard props
+ - [CHORE] Add string data type to token
+ - [FEATURE] Add api service for creating and deleting a bucketlist
+ - [FEATURE] Add constants for add and delete bucketlist
+ - [FEATURE] Add actions for creating and deleting a bucketlist
+ - [FEATURE] Add saga effects for whoami actions
+ - [FEATURE] Add saga effects for bucketlists actions
+ - [FEATURE] Add saga effects for authorization actions
+ - [FEATURE] Add reducers to handle whoami actions
+ - [FEATURE] Add reducers to handle bucketlists actions
+ - [FEATURE] Add reducers to handle authentication actions
+ - [CHORE] Split app into presentational and container components
+ - [FEATURE] Add material-ui card design for displaying bucketlists on dashboard
+ - [FEATURE] Add api service for bucketlists items requests
+ - [FEATURE] Add api service for bucketlists requests
+ - [FEATURE] Add api service for authentication requests
+ - [FEATURE] Add bucketlist items actions
+ - [FEATURE] Add bucketlist actions
+ - [FEATURE] Add authorization actions
+ - [CHORE] Add styling for app container div
+ - [FEATURE] Add store config
+ - [FEATURE] Add sagas for login, signup, get bucketlists and whoami
+ - [FEATURE] Add protected routes
+ - [FEATURE] Add reducers for whoami, authentication and bucketlists
+ - [CHORE] Add signup form and default app state
+ - [CHORE] Add authentication check for dashboard navigation to show only authenticated routes for logged in users
+ - [CHORE] Delete unused files
+ - [CHORE] Update axios config request headers
+ - [CHORE] Add constant for action types
+ - [CHORE] Update project dependencies
+ - [CHORE] Change directory structure, setup redux with basic sagas, delete unused files
+ - [CHORE] Add react source files
+
