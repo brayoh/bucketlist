@@ -3,9 +3,8 @@ import {
   WHOAMI_SUCCESS,
   WHOAMI_FAILURE
 } from "../actions/constants";
-import initialState from "./defaultState";
 
-export default function whoami(state = {}, action) {
+export default function whoami(state = {}, action: Object) {
   switch (action.type) {
     case WHOAMI_REQUEST:
       return state;

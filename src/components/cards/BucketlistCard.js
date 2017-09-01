@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import moment from "moment";
+import { Link } from "react-router";
 
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
@@ -8,6 +9,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import DeleteIcon from 'material-ui-icons/Delete';
+import EditIcon from 'material-ui-icons/Edit';
 import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
@@ -65,17 +67,21 @@ const BucketlistCard = (props: Object) : HTMLElement => {
               </CardContent>
               <CardActions className="text-center">
                 <Grid item xs={6}>
-                  <Button dense>View Items</Button>
+                  <Link to={`/dashboard/${bucket.id}/items`}><Button dense>View Items</Button></Link>
                 </Grid>
                 <Grid item xs={6}>
-                  <IconButton>
+                  <IconButton onClick={() => props.handleRequestOpen('edit', bucket.id)}>
+                    <EditIcon />
+                  </IconButton>
+
+                  <IconButton onClick={() => props.handleRequestOpen('confirm', bucket.id)}>
                     <DeleteIcon />
                   </IconButton>
                 </Grid>
               </CardActions>
             </Card>
           </Grid>
-        ) : <p>No Bucketes found</p>
+        ) : <p>No Buckets found</p>
         }
       </Grid>
     </div>

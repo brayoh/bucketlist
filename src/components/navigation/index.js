@@ -109,9 +109,15 @@ class AppNavigation extends Component {
               <MenuIcon onClick={this.handleOpen}/>
             </IconButton>
             <Typography type="title" color="inherit" className={classes.flex}>
-              Title
+              {this.props.username ? `Welcome ${this.props.username}` : 'Awesome Bucketlist' }
             </Typography>
-            { !this.props.authenticated && <Link to="/login"><Button color="contrast">Login</Button></Link>}
+              { 
+                this.props.route === "/register" &&
+                  <Link to="/login"><Button color="contrast">Login</Button></Link>
+              }
+              { this.props.route === "/login" &&
+                <Link to="/register"><Button color="contrast">Sign Up</Button></Link>
+              }
           </Toolbar>
         </AppBar>
         <Drawer open={this.state.open} onRequestClose={this.handleClose} onClick={this.handleClose}>

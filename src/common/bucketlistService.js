@@ -1,6 +1,6 @@
 import instance from "./axios_config";
 
-function getBuckets(data) {
+function getBuckets(data: Object) {
   return instance.request({
     url: '/bucketlists',
     method: 'GET',
@@ -12,11 +12,11 @@ function getBuckets(data) {
   })
 }
 
-function addBucket(data) {
+function addBucket(data: Object) {
   return instance.request({
     url: '/bucketlists',
     method: 'POST',
-    headers:{
+    headers: {
       "Authorization": data.token
     },
     data: JSON.stringify({
@@ -29,9 +29,27 @@ function addBucket(data) {
   })
 }
 
-function deleteBucket(data) {
+function updateBucket(data: Object) {
   return instance.request({
-    url: '/bucketlists'+ data.bucket_id,
+    url: '/bucketlists/' + data.bucket_id,
+    method: 'PUT',
+    headers: {
+      "Authorization": data.token
+    },
+    data: JSON.stringify({
+      "name": data.name,
+      "description": data.description,
+      "done": data.done
+    })
+
+  }).then(function(response) {
+    return response.data
+  })
+}
+
+function deleteBucket(data: Object) {
+  return instance.request({
+    url: '/bucketlists/'+ data.bucket_id,
     method: 'DELETE',
     headers:{
       "Authorization": data.token
@@ -45,6 +63,7 @@ function deleteBucket(data) {
 const Api = Object.assign({}, {
   getBuckets,
   addBucket,
+  updateBucket,
   deleteBucket
 })
 

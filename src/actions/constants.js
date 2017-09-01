@@ -10,6 +10,8 @@ export const SIGNUP_REQUEST: string = 'SIGNUP_REQUEST';
 export const SIGNUP_FAILURE: string = 'SIGNUP_FAILURE';
 export const SIGNUP_SUCCESS: string = 'SIGNUP_SUCCESS';
 
+// logout user
+export const LOGOUT_USER: string = 'LOGOUT_USER';
 // whoami check
 export const WHOAMI_REQUEST: string = 'WHOAMI_REQUEST';
 export const WHOAMI_SUCCESS: string = 'WHOAMI_SUCCESS';
@@ -30,6 +32,7 @@ export const GET_BUCKETLISTS_FAILURE: string = 'GET_BUCKETLISTS_FAILURE';
 export const UPDATE_BUCKETLIST_REQUEST: string = 'UPDATE_BUCKETLIST_REQUEST';
 export const UPDATE_BUCKETLIST_SUCCESS: string = 'UPDATE_BUCKETLIST_SUCCESS';
 export const UPDATE_BUCKETLIST_FAILURE: string = 'UPDATE_BUCKETLIST_FAILURE';
+export const RESET_ITEM_REQUEST_STATE: string = 'RESET_ITEM_REQUEST_STATE';
 
 // delete a bucketlist
 export const DELETE_BUCKETLIST_REQUEST: string = 'DELETE_BUCKETLIST_REQUEST';

@@ -13,7 +13,7 @@ function loginUser(user: Object) {
   })
 }
 
-function registerUser(user) {
+function registerUser(user: Object) {
   return instance.request({
     url: '/auth/register',
     method: 'POST',
@@ -26,7 +26,7 @@ function registerUser(user) {
   })
 }
 
-function fetchUserData(token) {
+function fetchUserData(token: string) {
   return instance.request({
     url: '/whoami',
     method: 'GET',

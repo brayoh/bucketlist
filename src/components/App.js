@@ -6,7 +6,10 @@ class App extends Component{
   render(){
     return(
       <div>
-        <AppNavigation authenticated={this.props.auth} />
+        <AppNavigation
+          authenticated={this.props.auth}
+          username={this.props.whoami.username}
+          route={this.props.currentRoute} />
         <div className="container">
           {this.props.children}
         </div>
@@ -16,7 +19,9 @@ class App extends Component{
 }
 
 const mapStateToProps = (state: Object, ownProps: Object) => ({
-  auth: state.auth.authenticated
+  auth: state.auth.authenticated,
+  whoami: state.whoami,
+  currentRoute: ownProps.location.pathname
 });
 
 export default connect(mapStateToProps, null)(App);

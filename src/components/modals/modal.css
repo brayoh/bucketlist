@@ -1,0 +1,19 @@
+.modal-dialog div[class^="MuiPaper"] {
+  width: 100%; }
+
+.input-container div[class^="MuiFormControl"] {
+  width: 90%;
+  margin-left: 5% !important; }
+
+.modal-title {
+  background: #3F51B5; }
+  .modal-title h2 {
+    color: #fff;
+    text-align: center; }
+
+.error-text {
+  position: relative;
+  color: red !important;
+  text-align: center;
+  font-weight: 700;
+  top: 10px; }

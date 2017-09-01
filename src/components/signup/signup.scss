@@ -1,0 +1,21 @@
+.login-grid__container {
+  flex-grow: 1;
+  margin-top: 30;
+}
+input{
+  margin-bottom: 16px;
+}
+.paper {
+  padding: 3%;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  .form-input{
+    width: 50%;
+    margin-bottom: 2%;
+  }
+  button[type="submit"]{
+    margin: 16px 0px 16px 0px;
+    width: 50%;
+  }
+}

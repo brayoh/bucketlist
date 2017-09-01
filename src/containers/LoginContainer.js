@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import { browserHistory } from "react-router";
+import Snackbar from 'material-ui/Snackbar';
 import LoginForm from '../components/login';
 import {login} from "../actions/authorization";
 
@@ -12,9 +13,13 @@ class LoginContainer extends Component {
     this.state = {
       username: '',
       password: '',
+      open: false,
+      vertical: 'top',
+      horizontal: 'center'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -23,6 +28,9 @@ class LoginContainer extends Component {
       // user is authenticated redirect to dashboard
       browserHistory.push("/dashboard");
     }
+    this.setState({
+      open: true
+    })
   }
 
   handleSubmit(e: Object) {
@@ -35,25 +43,35 @@ class LoginContainer extends Component {
     input[e.target.name] = e.target.value;
     this.setState(input);
   }
+
+  handleRequestClose(){
+     this.setState({ open: false });
+  };
+
   render() {
+    const { vertical, horizontal, open } = this.state;
     return (
       <div className="login-containter">
         <LoginForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <p>
-          {this.props.response.message}
-        </p>
+        <Snackbar
+           anchorOrigin={{ vertical, horizontal }}
+           open={open}
+           onRequestClose={this.handleRequestClose}
+           SnackbarContentProps={{
+             'aria-describedby': 'message-id',
+           }}
+           message={this.props.response.message}
+         />
       </div>
     );
   }
 }
-const mapStateToProps = (state: Object, ownProps: Object) => {
-  return {
-    response: state.auth
-  }
-}
+const mapStateToProps = (state: Object, ownProps: Object) => ({
+  response: state.auth
+})
 
 const mapDispatchToProps = dispatch => ({
     loginUser: payload => dispatch(login(payload))

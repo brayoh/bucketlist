@@ -1,10 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory} from 'react-router';
+import { Router, Route } from 'react-router';
 import App from './components/App';
 import LoginContainer from './containers/LoginContainer';
 import SignUpContainer from './containers/SignUpContainer';
 import DashboardContainer from './containers/DashboardContainer';
+import ItemsContainer from './containers/ItemsContainer';
+
+
 import configureStore from "./store";
 
 const store_config = configureStore()
@@ -33,22 +36,16 @@ const AppRoutes = () => (
 
   <Provider store={store}>
     <Router history={store_config.history}>
-
       <Route path='/' component={App}>
-          // public routes
+        // public routes
         <Route path='/login' component={LoginContainer} onEnter={ redirectIfAuth(store) } />
         <Route path='/register' component={SignUpContainer} onEnter={ redirectIfAuth(store) }/>
+        
         // protected routes
-        <Route path='/dashboard' component={DashboardContainer} onEnter={ requireAuth(store) } />
-        <Route path='/bucketlists/:bucket_id' component={App} onEnter={ requireAuth(store) }>
-          <Route path='/new' component={App}  onEnter={ requireAuth(store) }/>
-          <Route path='/edit' component={App} onEnter={ requireAuth(store) } />
-          <Route path='delete' component={App} onEnter={ requireAuth(store) } />
-          <Route path='/items/:item_id/edit' component={App} onEnter={ requireAuth(store) } />
-          <Route path='/items/:item_id/delete' component={App} onEnter={ requireAuth(store) } />
-        </Route>
-      </Route>
+        <Route path='/dashboard' component={DashboardContainer} onEnter={ requireAuth(store) }/>
+        <Route path='/dashboard/:bucket_id/items' component={ItemsContainer}  onEnter={ requireAuth(store) }/>
 
+        </Route>
     </Router>
   </Provider>
 

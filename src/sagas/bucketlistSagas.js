@@ -4,6 +4,8 @@ import {
   GET_BUCKETLISTS_FAILURE,
   ADD_BUCKETLIST_SUCCESS,
   ADD_BUCKETLIST_FAILURE,
+  UPDATE_BUCKETLIST_SUCCESS,
+  UPDATE_BUCKETLIST_FAILURE,
   DELETE_BUCKETLIST_SUCCESS,
   DELETE_BUCKETLIST_FAILURE
 } from "../actions/constants";
@@ -33,16 +35,16 @@ export function* getBucketlists(token: string) {
   }
 }
 
-export function* addBucketlist(payload: Object) {
+export function* addBucketlist(data: Object) {
   try {
     // make request to server
-    const bucketData = yield call(Api.getBuckets, payload);
+    const bucketData = yield call(Api.addBucket, data.payload);
     // login was successful dispatch success
     yield put({
       type: ADD_BUCKETLIST_SUCCESS,
       payload: {
-        name: payload.name,
-        description: payload.description
+        message: bucketData.message,
+        status: bucketData.status
       }
     });
   } catch (error) {
@@ -57,15 +59,43 @@ export function* addBucketlist(payload: Object) {
   }
 }
 
-export function* deleteBucketlist(payload: Object) {
+export function* updateBucketlist(data: Object) {
+  try {
+    console.log(data)
+    // make request to server
+    const bucketData = yield call(Api.updateBucket, data.payload);
+    // login was successful dispatch success
+    yield put({
+      type: UPDATE_BUCKETLIST_SUCCESS,
+      payload: {
+        status: bucketData.status,
+        message: bucketData.message
+      }
+    });
+  } catch (error) {
+    console.log(error)
+    // login failed dispatch failure
+    yield put({
+      type: UPDATE_BUCKETLIST_FAILURE,
+      payload: {
+        message: error.response.data.message,
+        status: error.response.data.status
+      }
+    });
+  }
+}
+
+export function* deleteBucketlist(data: Object) {
   try {
     // make request to server
-    const bucketData = yield call(Api.deleteBucket, payload);
+    const bucketData = yield call(Api.deleteBucket, data.payload);
     // login was successful dispatch success
     yield put({
       type: DELETE_BUCKETLIST_SUCCESS,
       payload: {
-        status: bucketData.status
+        message: bucketData.message,
+        status: bucketData.status,
+        bucket_id: data.payload.bucket_id
       }
     });
   } catch (error) {

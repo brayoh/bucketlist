@@ -1,0 +1,33 @@
+
+.modal-dialog {
+  // div{
+  //   width: 100%;
+  // }
+  div[class^="MuiPaper"]{
+    width: 100%;
+  }
+}
+
+.input-container {
+  div[class^="MuiFormControl"] {
+    width: 90%;
+    margin-left: 5% !important;
+  }
+}
+
+.modal-title {
+  background: #3F51B5;
+
+  h2 {
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.error-text {
+  position: relative;
+  color: rgb(255, 0, 0) !important;
+  text-align: center;
+  font-weight: 700;
+  top: 10px;
+}

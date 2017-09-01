@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import { browserHistory } from "react-router";
+import Snackbar from "material-ui/Snackbar";
 import {signup} from "../actions/authorization";
 import SignUpForm from '../components/signup';
 
@@ -10,10 +11,14 @@ class SignUpContainer extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      open: false,
+      vertical: 'top',
+      horizontal: 'center'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -22,6 +27,10 @@ class SignUpContainer extends Component {
       // user registration was successful
 
     }
+    // display the error
+    this.setState({
+      open: true
+    })
   }
 
   handleSubmit(e: Object) {
@@ -36,16 +45,28 @@ class SignUpContainer extends Component {
     this.setState(input);
   }
 
+  handleRequestClose(){
+     this.setState({ open: false });
+  };
+
   render() {
+    const { vertical, horizontal, open } = this.state;
     return (
       <div className="login-container">
         <SignUpForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <p>
-          {this.props.response.message}
-        </p>
+
+        <Snackbar
+           anchorOrigin={{ vertical, horizontal }}
+           open={open}
+           onRequestClose={this.handleRequestClose}
+           SnackbarContentProps={{
+             'aria-describedby': 'message-id',
+           }}
+           message={this.props.response.message}
+         />
       </div>
     );
   }
