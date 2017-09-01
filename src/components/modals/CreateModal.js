@@ -28,7 +28,7 @@ const AddBucketDialog = (props) => (
           </DialogContentText>
           <DialogContent>
             <Grid item xs={12} className="input-container">
-              {props.description ?
+              {props.description !== undefined ?
                   <TextField
                     name="name"
                     label="bucketlist name"
@@ -46,7 +46,7 @@ const AddBucketDialog = (props) => (
                     onChange={props.handleChange} />
               }
             </Grid>
-            {props.description && <Grid item xs={12} className="input-container">
+            {props.description !== undefined && <Grid item xs={12} className="input-container">
               <TextField
                 name="description"
                 label="bucketlist description"
