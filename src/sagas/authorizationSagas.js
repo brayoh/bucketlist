@@ -18,6 +18,12 @@ export function* loginUser(data) {
       localStorage.setItem("awesome_bucketlist_token", authData.token)
     }
 
+    // get user info
+    yield put({
+      type: WHOAMI_REQUEST,
+      token: authData.token
+    });
+
     // login was successful dispatch success
     yield put({
       type: LOGIN_SUCCESS,
