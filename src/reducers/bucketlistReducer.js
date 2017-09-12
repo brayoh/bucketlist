@@ -45,24 +45,17 @@ export default function bucketlists(state : Object = initialState, action) {
           message: action.payload.message
         }
       });
-      break;
-
-    case RESET_REQUEST_STATE:
-      return Object.assign([], state, {
-        request: {
-          status: "",
-          message: ""
-        }
-      });
-      break;
 
     case ADD_BUCKETLIST_FAILURE:
-      return Object.assign([], state, action.payload)
-      break;
+      return Object.assign([], state, {
+        request: {
+          status: action.payload.status,
+          message: action.payload.message
+        }
+      });
 
     case GET_BUCKETLISTS_SUCCESS:
       return Object.assign([], state, action.payload.data)
-      break;
 
     case GET_BUCKETLISTS_FAILURE:
       return Object.assign([], state, {
@@ -79,7 +72,6 @@ export default function bucketlists(state : Object = initialState, action) {
           message: action.payload.message
         }
       });
-      break;
 
     case UPDATE_BUCKETLIST_FAILURE:
       return Object.assign([], state, {
