@@ -1,5 +1,5 @@
 import auth from "./authReducer";
 import bucketlists from "./bucketlistReducer";
-import whoami from "./whoamiReducer";
+import item from "./itemReducer";
 
-export {auth, bucketlists, whoami}
+export {auth, bucketlists, item}

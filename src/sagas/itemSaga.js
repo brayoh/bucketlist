@@ -18,7 +18,8 @@ export function* addItem(data: Object) {
     yield put({
       type: ADD_ITEM_SUCCESS,
       payload: {
-        name: data.payload.name
+        status: itemData.status,
+        message: itemData.message,
       }
     });
   } catch (error) {
@@ -41,10 +42,12 @@ export function* updateItem(data: Object) {
     yield put({
       type: UPDATE_ITEM_SUCCESS,
       payload: {
-        data: itemData
+        message: itemData.message,
+        status: itemData.status
       }
     });
   } catch (error) {
+    console.log(error)
     // login failed dispatch failure
     yield put({
       type: UPDATE_ITEM_FAILURE,
@@ -64,6 +67,7 @@ export function* deleteItem(data: Object) {
     yield put({
       type: DELETE_ITEM_SUCCESS,
       payload: {
+        message: itemData.message,
         status: itemData.status
       }
     });

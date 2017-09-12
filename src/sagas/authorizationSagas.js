@@ -3,7 +3,8 @@ import {
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
   SIGNUP_FAILURE,
-  SIGNUP_SUCCESS
+  SIGNUP_SUCCESS,
+  WHOAMI_REQUEST
 } from "../actions/constants";
 
 import Api from "../common/authService";
@@ -32,6 +33,7 @@ export function* loginUser(data) {
         status: authData.status
       }
     });
+
   } catch (error) {
     // login failed dispatch failure
     yield put({
@@ -48,12 +50,13 @@ export function* registerUser(data) {
   try {
     // make request to server
     const authData = yield call(Api.registerUser, data.user);
+    console.log(authData)
     // login was successful dispatch success
     yield put({
       type: SIGNUP_SUCCESS,
       payload: {
         message: authData.message,
-        status: authData.status,
+        status: authData.status
 
       }
     });

@@ -21,11 +21,8 @@ export default function configureStore (){
 
     sagaMiddleware.run(rootSaga)
 
-    let token = localStorage.getItem('awesome_bucketlist_token')
+    const token = localStorage.getItem('awesome_bucketlist_token')
 
-    if (token === null) {
-        token = sessionStorage.getItem('token')
-    }
     if (token !== null) {
         store.dispatch(loginUserSuccess());
         store.dispatch(whoami(token));
