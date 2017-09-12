@@ -12,7 +12,6 @@ import { whoami, loginUserSuccess } from "../actions/authorization";
 const sagaMiddleware = createSagaMiddleware()
 
 export default function configureStore (){
-  console.log(reducers)
   const store = createStore(combineReducers({
       ...reducers,
       "routing": routerReducer

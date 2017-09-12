@@ -1,6 +1,7 @@
 import {put, call} from "redux-saga/effects";
-import {WHOAMI_FAILURE, WHOAMI_SUCCESS} from "../actions/constants";
+import {WHOAMI_FAILURE, WHOAMI_SUCCESS, REDIRECT} from "../actions/constants";
 import Api from "../common/authService";
+import { push } from "react-router-redux";
 
 export function* whoami(data) {
   try {
@@ -14,14 +15,6 @@ export function* whoami(data) {
       }
     });
 
-    yield put({
-      type: WHOAMI_SUCCESS,
-      payload: {
-        user: Object.assign({}, authData,{
-          token: data.token
-        })
-      }
-      });
     } catch (error) {
       // login failed dispatch failure
       yield put({

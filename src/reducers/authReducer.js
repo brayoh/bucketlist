@@ -55,7 +55,22 @@ export default function auth(state = initialState, action: Object) {
         message: action.payload.message,
         status: action.payload.status
       })
-      break;
+
+    case WHOAMI_SUCCESS:
+      return Object.assign({}, state, {
+        authenticated: true,
+        whoami: action.payload.user
+      })
+
+    case WHOAMI_FAILURE:
+      return Object.assign({}, state, {
+        authenticated: false,
+        status: action.payload.status,
+        message: action.payload.message
+      })
+
+    case REDIRECT:
+      return state;
 
     default:
       return state;

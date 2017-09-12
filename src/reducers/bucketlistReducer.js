@@ -15,7 +15,7 @@ import {
 } from "../actions/constants";
 
 const initialState = {
-  "request": {
+  request: {
     "status": "",
     "message": ""
   }
@@ -23,19 +23,20 @@ const initialState = {
 
 export default function bucketlists(state : Object = initialState, action) {
   switch (action.type) {
-
+    
     case GET_BUCKETLISTS_REQUEST:
-      return state;
-
     case UPDATE_BUCKETLIST_REQUEST:
-      return state;
-
     case DELETE_BUCKETLIST_REQUEST:
-      return state;
-
     case ADD_BUCKETLIST_REQUEST:
       return state;
-      break;
+
+    case RESET_REQUEST_STATE:
+      return Object.assign([], state, {
+        request: {
+          status: "",
+          message: ""
+        }
+      });
 
     case ADD_BUCKETLIST_SUCCESS:
       return Object.assign([], state, {
