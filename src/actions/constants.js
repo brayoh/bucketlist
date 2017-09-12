@@ -21,7 +21,6 @@ export const WHOAMI_FAILURE: string = 'WHOAMI_FAILURE';
 export const ADD_BUCKETLIST_REQUEST: string = 'ADD_BUCKETLIST_REQUEST';
 export const ADD_BUCKETLIST_SUCCESS: string = 'ADD_BUCKETLIST_SUCCESS';
 export const ADD_BUCKETLIST_FAILURE: string = 'ADD_BUCKETLIST_FAILURE';
-export const RESET_REQUEST_STATE: string = 'RESET_REQUEST_STATE';
 
 // get bucketlists
 export const GET_BUCKETLISTS_REQUEST: string = 'GET_BUCKETLISTS_REQUEST';
@@ -32,7 +31,6 @@ export const GET_BUCKETLISTS_FAILURE: string = 'GET_BUCKETLISTS_FAILURE';
 export const UPDATE_BUCKETLIST_REQUEST: string = 'UPDATE_BUCKETLIST_REQUEST';
 export const UPDATE_BUCKETLIST_SUCCESS: string = 'UPDATE_BUCKETLIST_SUCCESS';
 export const UPDATE_BUCKETLIST_FAILURE: string = 'UPDATE_BUCKETLIST_FAILURE';
-export const RESET_ITEM_REQUEST_STATE: string = 'RESET_ITEM_REQUEST_STATE';
 
 // delete a bucketlist
 export const DELETE_BUCKETLIST_REQUEST: string = 'DELETE_BUCKETLIST_REQUEST';
@@ -53,3 +51,9 @@ export const UPDATE_ITEM_FAILURE: string = 'UPDATE_ITEM_FAILURE';
 export const DELETE_ITEM_REQUEST: string = 'DELETE_ITEM_REQUEST';
 export const DELETE_ITEM_SUCCESS: string = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAILURE: string = 'DELETE_ITEM_FAILURE';
+
+export const REDIRECT: string = 'REDIRECT';
+// reset bucketlist request state
+export const RESET_ITEM_REQUEST_STATE: string = 'RESET_ITEM_REQUEST_STATE';
+// reset item request state
+export const RESET_REQUEST_STATE: string = 'RESET_REQUEST_STATE';
