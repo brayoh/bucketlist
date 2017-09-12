@@ -87,7 +87,6 @@ export default function bucketlists(state : Object = initialState, action) {
           status: action.payload.status
         }
       });
-      break;
 
     case DELETE_BUCKETLIST_SUCCESS:
       state = state.filter((bucket) => bucket.id !== action.payload.bucket_id)
@@ -97,7 +96,6 @@ export default function bucketlists(state : Object = initialState, action) {
           message: action.payload.message
         }
       });
-      break;
 
     case DELETE_BUCKETLIST_FAILURE:
       return Object.assign([], state, {
@@ -106,7 +104,6 @@ export default function bucketlists(state : Object = initialState, action) {
           message: action.payload.message
         }
       });
-      break;
 
     default:
       return state;

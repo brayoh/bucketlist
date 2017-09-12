@@ -5,23 +5,28 @@ import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
-  LOGOUT_USER
+  LOGOUT_USER,
+  WHOAMI_REQUEST,
+  WHOAMI_SUCCESS,
+  WHOAMI_FAILURE,
+  REDIRECT
 } from "../actions/constants";
 
 import initialState from "./defaultState";
 
+
 export default function auth(state = initialState, action: Object) {
   switch (action.type) {
     case LOGIN_REQUEST:
+    case WHOAMI_REQUEST:
+    case SIGNUP_REQUEST:
       return state;
-      break;
 
     case LOGIN_SUCCESS:
       state = Object.assign({}, state, {
         authenticated: true
       })
       return state
-      break;
 
     case LOGIN_FAILURE:
       return Object.assign({}, state, {
@@ -29,23 +34,20 @@ export default function auth(state = initialState, action: Object) {
         message: action.payload.message,
         status: action.payload.status
       })
-      break;
+
     case LOGOUT_USER:
       localStorage.removeItem("awesome_bucketlist_token");
-      state = Object.assign({}, state, {
-        authenticated: false
+      return Object.assign({}, state, {
+        authenticated: false,
+        whoami: {}
       });
-    break;
-    case SIGNUP_REQUEST:
-      return state;
-      break;
+
 
     case SIGNUP_SUCCESS:
       return Object.assign({}, state, {
         message: action.payload.message,
         status: action.payload.status
       })
-      break;
 
     case SIGNUP_FAILURE:
       return Object.assign({}, state, {

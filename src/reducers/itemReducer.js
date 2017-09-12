@@ -7,43 +7,79 @@ import {
   UPDATE_ITEM_FAILURE,
   DELETE_ITEM_SUCCESS,
   DELETE_ITEM_FAILURE,
-  DELETE_ITEM_REQUEST
+  DELETE_ITEM_REQUEST,
+  RESET_ITEM_REQUEST_STATE
 } from "../actions/constants";
 
 const initialState = {
-  "status": ""
+  "request": {
+    "status": "",
+    "message": ""
+  }
 }
 
-
-export default function itemsstate: Object = initialState, action) {
-  switch (action.type) {
-
+export default function items(state = initialState, action) : Object {
+  switch(action.type) {
     case ADD_ITEM_REQUEST:
-      return state;
-      break;
-
     case DELETE_ITEM_REQUEST:
+    case UPDATE_ITEM_REQUEST:
       return state;
+
+    case RESET_ITEM_REQUEST_STATE:
+      return Object.assign({}, state, {
+        request: {
+          "status": "",
+          "message": ""
+        }
+      })
 
     case ADD_ITEM_SUCCESS:
-      return Object.assign([], state, action.payload)
-      break;
+      return Object.assign({}, state, {
+        request: {
+          "status": action.payload.status,
+          "message": action.payload.message
+        }
+      })
 
     case ADD_ITEM_FAILURE:
-      return Object.assign([], state, action.payload)
-      break;
+      return Object.assign({}, state, {
+        request: {
+          "status": action.payload.status,
+          "message": action.payload.message
+        }
+      })
+
+    case UPDATE_ITEM_SUCCESS:
+      return Object.assign({}, state, {
+        request: {
+          "status": action.payload.status,
+          "message": action.payload.message
+        }
+      })
+
+    case UPDATE_ITEM_FAILURE:
+      return Object.assign({}, state, {
+        request: {
+          "status": action.payload.status,
+          "message": action.payload.message
+        }
+      })
 
     case DELETE_ITEM_SUCCESS:
       return Object.assign({}, state, {
-        status: action.payload.status
+        request: {
+          "status": action.payload.status,
+          "message": action.payload.message
+        }
       })
-      break;
 
     case DELETE_ITEM_FAILURE:
-      return Object.assign({}, state, {
-        message: action.payload.message
+      return Object.assign([], state, {
+        request: {
+          "status": action.payload.status,
+          "message": action.payload.message
+        }
       })
-      break;
 
     default:
       return state;
