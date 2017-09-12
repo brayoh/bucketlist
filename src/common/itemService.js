@@ -5,9 +5,6 @@ function addItem(data) {
   return instance.request({
     url: `/bucketlists/${data.bucket_id}/items`,
     method: 'POST',
-    headers:{
-      "Authorization": data.token
-    },
     data: JSON.stringify({
       "name": data.name
     })
@@ -21,9 +18,6 @@ function updateItem(data) {
   return instance.request({
     url: `/bucketlists/${data.bucket_id}/items/${data.item_id}`,
     method: 'PUT',
-    headers:{
-      "Authorization": data.token
-    },
     data: {
       name: data.name
     }
@@ -36,10 +30,6 @@ function deleteItem(data) {
   return instance.request({
     url: `/bucketlists/${data.bucket_id}/items/${data.item_id}`,
     method: 'DELETE',
-    headers:{
-      "Authorization": data.token
-    }
-
   }).then(function(response) {
     return response.data
   })
