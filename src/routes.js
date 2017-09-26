@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {Router, Route} from 'react-router';
+import {Router, Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import LoginContainer from './containers/login/LoginContainer';
 import SignUpContainer from './containers/signup/SignUpContainer';
@@ -37,6 +37,7 @@ const AppRoutes = () => (
   <Provider store={store}>
     <Router history={store_config.history}>
       <Route path='/' component={App}>
+        <IndexRoute component={DashboardContainer} />
         // public routes
         <Route path='/login' component={LoginContainer} onEnter={redirectIfAuth(store)}/>
         <Route path='/register' component={SignUpContainer} onEnter={redirectIfAuth(store)}/>
